@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Onboarding Tracks — Assessment Portal</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — Admin area. <a href="../index.html">← All screens</a></div>
+<div class="app-shell">
+  <nav class="sidebar">
+    <div class="brand"><div class="brand-mark">AP</div> Assessment Portal</div>
+    <div class="nav-group">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="assessments.html">Assessments</a>
+      <a class="nav-link active" href="tracks.html">Onboarding Tracks</a>
+      <a class="nav-link" href="reports.html">Reports</a>
+      <a class="nav-link" href="audit-log.html">Audit Log</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Super Admin</div>
+      <a class="nav-link" href="users.html">Users</a>
+      <a class="nav-link" href="integrations.html">Integrations</a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">Onboarding Tracks</div>
+      <div class="topbar-user">
+        <span class="role-badge role-admin">Admin</span>
+        <div class="avatar">PN</div> Priya Nair
+        <a class="btn btn-ghost btn-sm" href="../login.html">Log out</a>
+      </div>
+    </header>
+    <div class="content">
+      <div class="flex-between" style="margin-bottom:18px;">
+        <p class="muted" style="margin:0;">FR-8, FR-11 — ordered assessments/tasks auto-applied to new hires in a role/department.</p>
+        <a class="btn btn-primary" href="track-builder.html">+ New track</a>
+      </div>
+
+      <div class="card">
+        <table>
+          <thead><tr><th>Track</th><th>Role / Department</th><th>Steps</th><th>Assigned hires</th><th></th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Cybersecurity Instructor Onboarding</strong></td>
+              <td>Instructors — Security</td>
+              <td class="num">5</td>
+              <td class="num">12</td>
+              <td><a class="btn btn-sm" href="track-builder.html">Edit</a></td>
+            </tr>
+            <tr>
+              <td><strong>Support Staff Onboarding</strong></td>
+              <td>Support</td>
+              <td class="num">3</td>
+              <td class="num">9</td>
+              <td><a class="btn btn-sm" href="track-builder.html">Edit</a></td>
+            </tr>
+            <tr>
+              <td><strong>Mentorship Onboarding</strong></td>
+              <td>Instructors — Mentorship</td>
+              <td class="num">4</td>
+              <td class="num">6</td>
+              <td><a class="btn btn-sm" href="track-builder.html">Edit</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

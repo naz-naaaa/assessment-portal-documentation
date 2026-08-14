@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Integrations — Assessment Portal</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — Super Admin area. <a href="../index.html">← All screens</a></div>
+<div class="app-shell">
+  <nav class="sidebar">
+    <div class="brand"><div class="brand-mark">AP</div> Assessment Portal</div>
+    <div class="nav-group">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="assessments.html">Assessments</a>
+      <a class="nav-link" href="tracks.html">Onboarding Tracks</a>
+      <a class="nav-link" href="reports.html">Reports</a>
+      <a class="nav-link" href="audit-log.html">Audit Log</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Super Admin</div>
+      <a class="nav-link" href="users.html">Users</a>
+      <a class="nav-link active" href="integrations.html">Integrations</a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">Integrations</div>
+      <div class="topbar-user">
+        <span class="role-badge role-superadmin">Super Admin</span>
+        <div class="avatar">AC</div> Alex Chen
+        <a class="btn btn-ghost btn-sm" href="../login.html">Log out</a>
+      </div>
+    </header>
+    <div class="content content-narrow">
+      <div class="callout callout-info">
+        Scoped to Super Admin only, per requirements.md §4 ("integrations" ownership). Admins can still use PDF import — they just can't see or edit this key.
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Mistral AI</h2>
+          <span class="pill pill-passed">Connected</span>
+        </div>
+        <p class="muted">Used to parse admin-uploaded PDF question banks into structured questions during assessment authoring.</p>
+
+        <div class="field">
+          <label>API key</label>
+          <input type="text" value="sk-••••••••••••••••c204" disabled>
+          <div class="hint">Stored encrypted at rest (AES-256-GCM); decrypted only server-side when calling Mistral. Never shown in full again after saving.</div>
+        </div>
+
+        <table style="margin-top:6px;">
+          <tr><th style="width:140px;">Last rotated</th><td>Aug 14, 2026, 09:12 by Alex Chen</td></tr>
+          <tr><th>Added</th><td>Aug 10, 2026, 08:30 by Alex Chen</td></tr>
+        </table>
+
+        <div style="display:flex; gap:8px; margin-top:16px;">
+          <button class="btn">Rotate key</button>
+          <button class="btn" style="color:var(--critical); border-color:var(--critical);">Remove</button>
+        </div>
+        <p class="small muted" style="margin-top:10px;">Rotating or removing this key is logged to the <a href="audit-log.html">audit log</a> with actor and timestamp.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

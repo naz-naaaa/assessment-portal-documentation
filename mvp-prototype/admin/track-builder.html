@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Track Builder — Assessment Portal</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — Admin area. <a href="../index.html">← All screens</a></div>
+<div class="app-shell">
+  <nav class="sidebar">
+    <div class="brand"><div class="brand-mark">AP</div> Assessment Portal</div>
+    <div class="nav-group">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="assessments.html">Assessments</a>
+      <a class="nav-link active" href="tracks.html">Onboarding Tracks</a>
+      <a class="nav-link" href="reports.html">Reports</a>
+      <a class="nav-link" href="audit-log.html">Audit Log</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Super Admin</div>
+      <a class="nav-link" href="users.html">Users</a>
+      <a class="nav-link" href="integrations.html">Integrations</a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">Edit onboarding track</div>
+      <div class="topbar-user">
+        <span class="role-badge role-admin">Admin</span>
+        <div class="avatar">PN</div> Priya Nair
+        <a class="btn btn-ghost btn-sm" href="../login.html">Log out</a>
+      </div>
+    </header>
+    <div class="content">
+      <div class="crumb"><a href="tracks.html">Onboarding Tracks</a> / Cybersecurity Instructor Onboarding</div>
+
+      <div class="card">
+        <div class="card-header"><h2>Track details</h2></div>
+        <div class="form-row">
+          <div class="field"><label>Track name</label><input type="text" value="Cybersecurity Instructor Onboarding"></div>
+          <div class="field"><label>Applies to role / department</label><input type="text" value="Instructors — Security"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Steps (ordered) — FR-11</h2><button class="btn btn-sm btn-primary">+ Add step</button></div>
+        <div class="checklist">
+          <div class="check-item">
+            <div class="check-dot" style="border-color:var(--muted); color:var(--muted);">⋮⋮</div>
+            <div class="ci-body">
+              <div class="ci-title">1. Sign NDA &amp; security policy acknowledgement</div>
+              <div class="ci-meta">Manual step · due 3 days after start · FR-13</div>
+            </div>
+            <span class="pill pill-not-started">Manual task</span>
+          </div>
+          <div class="check-item">
+            <div class="check-dot" style="border-color:var(--muted); color:var(--muted);">⋮⋮</div>
+            <div class="ci-body">
+              <div class="ci-title">2. Network Fundamentals</div>
+              <div class="ci-meta">Assessment · 60 min · pass ≥ 65% · due 7 days after start</div>
+            </div>
+            <span class="pill pill-published">Assessment</span>
+          </div>
+          <div class="check-item">
+            <div class="check-dot" style="border-color:var(--muted); color:var(--muted);">⋮⋮</div>
+            <div class="ci-body">
+              <div class="ci-title">3. Threat Modeling Basics</div>
+              <div class="ci-meta">Assessment · 45 min · pass ≥ 70% · due 10 days after start</div>
+            </div>
+            <span class="pill pill-published">Assessment</span>
+          </div>
+          <div class="check-item">
+            <div class="check-dot" style="border-color:var(--muted); color:var(--muted);">⋮⋮</div>
+            <div class="ci-body">
+              <div class="ci-title">4. Teaching Scenarios (practical)</div>
+              <div class="ci-meta">Assessment · untimed, manually graded · due 14 days after start</div>
+            </div>
+            <span class="pill pill-draft">Assessment</span>
+          </div>
+          <div class="check-item">
+            <div class="check-dot" style="border-color:var(--muted); color:var(--muted);">⋮⋮</div>
+            <div class="ci-body">
+              <div class="ci-title">5. Manager sign-off</div>
+              <div class="ci-meta">Manual step · Reviewer confirms readiness · FR-15</div>
+            </div>
+            <span class="pill pill-not-started">Manual task</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-between">
+        <a class="btn" href="tracks.html">Cancel</a>
+        <button class="btn btn-primary">Save track</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

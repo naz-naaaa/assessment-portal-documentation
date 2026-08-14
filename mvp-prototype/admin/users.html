@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Users — Assessment Portal</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — Super Admin area. <a href="../index.html">← All screens</a></div>
+<div class="app-shell">
+  <nav class="sidebar">
+    <div class="brand"><div class="brand-mark">AP</div> Assessment Portal</div>
+    <div class="nav-group">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="assessments.html">Assessments</a>
+      <a class="nav-link" href="tracks.html">Onboarding Tracks</a>
+      <a class="nav-link" href="reports.html">Reports</a>
+      <a class="nav-link" href="audit-log.html">Audit Log</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Super Admin</div>
+      <a class="nav-link active" href="users.html">Users</a>
+      <a class="nav-link" href="integrations.html">Integrations</a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">Users</div>
+      <div class="topbar-user">
+        <span class="role-badge role-superadmin">Super Admin</span>
+        <div class="avatar">AC</div> Alex Chen
+        <a class="btn btn-ghost btn-sm" href="../login.html">Log out</a>
+      </div>
+    </header>
+    <div class="content">
+      <div class="flex-between" style="margin-bottom:18px;">
+        <p class="muted" style="margin:0;">FR-33 — accounts, roles, and department/track assignment.</p>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-sm">Import CSV</button>
+          <button class="btn btn-sm btn-primary">+ Invite user</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <table>
+          <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Department</th><th>Manager</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Priya Nair</td><td class="muted">priya.nair@zevonai.com</td><td><span class="role-badge role-admin">Admin</span></td><td>People &amp; L&amp;D</td><td>—</td><td><span class="pill pill-passed">Active</span></td></tr>
+            <tr><td>Alex Chen</td><td class="muted">alex.chen@zevonai.com</td><td><span class="role-badge role-superadmin">Super Admin</span></td><td>IT / Ops</td><td>—</td><td><span class="pill pill-passed">Active</span></td></tr>
+            <tr><td>Ken Watanabe</td><td class="muted">ken.watanabe@zevonai.com</td><td><span class="role-badge role-reviewer">Reviewer</span></td><td>Security</td><td>Priya Nair</td><td><span class="pill pill-passed">Active</span></td></tr>
+            <tr><td>Fatima Rahman</td><td class="muted">fatima.rahman@zevonai.com</td><td><span class="role-badge role-candidate">Candidate</span></td><td>Security</td><td>Ken Watanabe</td><td><span class="pill pill-passed">Active</span></td></tr>
+            <tr><td>Daniel Osei</td><td class="muted">daniel.osei@zevonai.com</td><td><span class="role-badge role-candidate">Candidate</span></td><td>Security</td><td>Ken Watanabe</td><td><span class="pill pill-passed">Active</span></td></tr>
+            <tr><td>Jordan Blake</td><td class="muted">jordan.blake@zevonai.com</td><td><span class="role-badge role-candidate">Candidate</span></td><td>Security</td><td>Ken Watanabe</td><td><span class="pill pill-in-progress">Invited</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

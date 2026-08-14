@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Reports — Assessment Portal</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — Admin area. <a href="../index.html">← All screens</a></div>
+<div class="app-shell">
+  <nav class="sidebar">
+    <div class="brand"><div class="brand-mark">AP</div> Assessment Portal</div>
+    <div class="nav-group">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="assessments.html">Assessments</a>
+      <a class="nav-link" href="tracks.html">Onboarding Tracks</a>
+      <a class="nav-link active" href="reports.html">Reports</a>
+      <a class="nav-link" href="audit-log.html">Audit Log</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Super Admin</div>
+      <a class="nav-link" href="users.html">Users</a>
+      <a class="nav-link" href="integrations.html">Integrations</a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">Reports</div>
+      <div class="topbar-user">
+        <span class="role-badge role-admin">Admin</span>
+        <div class="avatar">PN</div> Priya Nair
+        <a class="btn btn-ghost btn-sm" href="../login.html">Log out</a>
+      </div>
+    </header>
+    <div class="content">
+      <div class="flex-between" style="margin-bottom:18px;">
+        <p class="muted" style="margin:0;">FR-27–FR-30 — funnel, per-hire, and per-assessment analytics.</p>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-sm">Export CSV</button>
+          <button class="btn btn-sm">Export PDF</button>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-tile"><div class="stat-label">Total active hires</div><div class="stat-value">73</div></div>
+        <div class="stat-tile"><div class="stat-label">Completion rate</div><div class="stat-value">61%</div><div class="stat-sub">vs. 54% last quarter</div></div>
+        <div class="stat-tile"><div class="stat-label">Avg. score</div><div class="stat-value">78%</div></div>
+        <div class="stat-tile"><div class="stat-label">Overdue</div><div class="stat-value" style="color:var(--critical);">3</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Onboarding funnel</h2></div>
+        <div class="meter-row"><div class="meter-label">Started</div><div class="meter-track"><div class="meter-fill info" style="width:100%;"></div></div><div class="meter-value">38</div></div>
+        <div class="meter-row"><div class="meter-label">In progress</div><div class="meter-track"><div class="meter-fill warning" style="width:55%;"></div></div><div class="meter-value">21</div></div>
+        <div class="meter-row"><div class="meter-label">Completed</div><div class="meter-track"><div class="meter-fill good" style="width:37%;"></div></div><div class="meter-value">14</div></div>
+        <div class="meter-row"><div class="meter-label">Overdue</div><div class="meter-track"><div class="meter-fill critical" style="width:8%;"></div></div><div class="meter-value">3</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Per-assessment analytics — FR-29</h2></div>
+        <table>
+          <thead><tr><th>Assessment</th><th>Avg. score</th><th>Pass rate</th><th>Attempts</th><th>Avg. time</th></tr></thead>
+          <tbody>
+            <tr><td>Threat Modeling Basics</td><td class="num">81%</td><td class="num">88%</td><td class="num">42</td><td class="num">38 min</td></tr>
+            <tr><td>Network Fundamentals</td><td class="num">74%</td><td class="num">71%</td><td class="num">39</td><td class="num">52 min</td></tr>
+            <tr><td>Support Workflow Quiz</td><td class="num">85%</td><td class="num">93%</td><td class="num">27</td><td class="num">19 min</td></tr>
+            <tr><td>Teaching Scenarios (practical)</td><td class="num">—</td><td class="num">—</td><td class="num">6</td><td class="num">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Per-hire report — FR-28</h2></div>
+        <table>
+          <thead><tr><th>Hire</th><th>Track</th><th>Attempts</th><th>Avg. score</th><th>Time spent</th><th>Reviewer comments</th></tr></thead>
+          <tbody>
+            <tr><td>Fatima Rahman</td><td>Cybersecurity Instructor</td><td class="num">2</td><td class="num">83%</td><td class="num">1h 24m</td><td class="num">1</td></tr>
+            <tr><td>Daniel Osei</td><td>Cybersecurity Instructor</td><td class="num">3</td><td class="num">69%</td><td class="num">2h 05m</td><td class="num">2</td></tr>
+            <tr><td>Maria Lopez</td><td>Support Staff</td><td class="num">1</td><td class="num">91%</td><td class="num">22m</td><td class="num">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

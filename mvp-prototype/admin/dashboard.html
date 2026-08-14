@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard — Assessment Portal</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — Admin area. <a href="../index.html">← All screens</a></div>
+<div class="app-shell">
+  <nav class="sidebar">
+    <div class="brand"><div class="brand-mark">AP</div> Assessment Portal</div>
+    <div class="nav-group">
+      <a class="nav-link active" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="assessments.html">Assessments</a>
+      <a class="nav-link" href="tracks.html">Onboarding Tracks</a>
+      <a class="nav-link" href="reports.html">Reports</a>
+      <a class="nav-link" href="audit-log.html">Audit Log</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Super Admin</div>
+      <a class="nav-link" href="users.html">Users</a>
+      <a class="nav-link" href="integrations.html">Integrations</a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">Dashboard</div>
+      <div class="topbar-user">
+        <span class="role-badge role-admin">Admin</span>
+        <div class="avatar">PN</div> Priya Nair
+        <a class="btn btn-ghost btn-sm" href="../login.html">Log out</a>
+      </div>
+    </header>
+    <div class="content">
+      <p class="muted" style="margin-bottom:20px;">Onboarding funnel across all active hires. <span class="small">Ref: FR-27</span></p>
+
+      <div class="stat-grid">
+        <div class="stat-tile">
+          <div class="stat-label">Started</div>
+          <div class="stat-value">38</div>
+          <div class="stat-sub">this quarter</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-label">In progress</div>
+          <div class="stat-value">21</div>
+          <div class="stat-sub">across 6 tracks</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-label">Completed</div>
+          <div class="stat-value">14</div>
+          <div class="stat-sub">signed off</div>
+        </div>
+        <div class="stat-tile">
+          <div class="stat-label">Overdue</div>
+          <div class="stat-value" style="color:var(--critical);">3</div>
+          <div class="stat-sub">past due date</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Quick actions</h2>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <a class="btn btn-primary" href="assessment-builder.html">+ New assessment</a>
+          <a class="btn" href="pdf-import.html">Import from PDF</a>
+          <a class="btn" href="track-builder.html">+ New onboarding track</a>
+          <a class="btn" href="assign-track.html">Assign track to hire</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Needs your attention</h2>
+          <a class="small" href="reports.html">View all reports →</a>
+        </div>
+        <table>
+          <thead><tr><th>Hire</th><th>Track</th><th>Item</th><th>Status</th><th>Due</th></tr></thead>
+          <tbody>
+            <tr><td>Daniel Osei</td><td>Cybersecurity Instructor Onboarding</td><td>Threat Modeling Basics</td><td><span class="pill pill-needs-review">Needs review</span></td><td class="muted">Aug 12</td></tr>
+            <tr><td>Maria Lopez</td><td>Support Staff Onboarding</td><td>Support Workflow Quiz</td><td><span class="pill pill-overdue">Overdue</span></td><td style="color:var(--critical);">Aug 09</td></tr>
+            <tr><td>Ken Watanabe</td><td>Mentorship Onboarding</td><td>Teaching Scenarios</td><td><span class="pill pill-needs-review">Needs review</span></td><td class="muted">Aug 13</td></tr>
+            <tr><td>Fatima Rahman</td><td>Cybersecurity Instructor Onboarding</td><td>Network Fundamentals</td><td><span class="pill pill-in-progress">In progress</span></td><td class="muted">Aug 18</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

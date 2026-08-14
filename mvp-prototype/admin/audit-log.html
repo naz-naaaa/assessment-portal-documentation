@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Audit Log — Assessment Portal</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — Admin area. <a href="../index.html">← All screens</a></div>
+<div class="app-shell">
+  <nav class="sidebar">
+    <div class="brand"><div class="brand-mark">AP</div> Assessment Portal</div>
+    <div class="nav-group">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="assessments.html">Assessments</a>
+      <a class="nav-link" href="tracks.html">Onboarding Tracks</a>
+      <a class="nav-link" href="reports.html">Reports</a>
+      <a class="nav-link active" href="audit-log.html">Audit Log</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Super Admin</div>
+      <a class="nav-link" href="users.html">Users</a>
+      <a class="nav-link" href="integrations.html">Integrations</a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">Audit Log</div>
+      <div class="topbar-user">
+        <span class="role-badge role-admin">Admin</span>
+        <div class="avatar">PN</div> Priya Nair
+        <a class="btn btn-ghost btn-sm" href="../login.html">Log out</a>
+      </div>
+    </header>
+    <div class="content">
+      <p class="muted" style="margin-bottom:18px;">FR-34, NFR-8 — every grade change, role change, and publish action, with actor and timestamp.</p>
+
+      <div class="card">
+        <div class="form-row" style="margin-bottom:6px;">
+          <div class="field"><label>Action type</label><select><option>All actions</option><option>Grade changed</option><option>Role changed</option><option>Assessment published</option><option>Integration key rotated</option></select></div>
+          <div class="field"><label>Actor</label><select><option>All users</option><option>Priya Nair</option><option>Ken Watanabe</option><option>Alex Chen</option></select></div>
+          <div class="field"><label>Date range</label><input type="text" value="Aug 01 – Aug 14, 2026"></div>
+        </div>
+
+        <table>
+          <thead><tr><th>Timestamp</th><th>Actor</th><th>Action</th><th>Target</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="muted">Aug 14, 09:12</td><td>Alex Chen <span class="role-badge role-superadmin" style="margin-left:4px;">Super Admin</span></td><td>Integration key rotated</td><td>Mistral AI</td><td class="muted">Key ID …a91f → …c204</td></tr>
+            <tr><td class="muted">Aug 13, 16:40</td><td>Ken Watanabe <span class="role-badge role-reviewer" style="margin-left:4px;">Reviewer</span></td><td>Grade changed</td><td>D. Osei — Threat Modeling Q7</td><td class="muted">6/10 → 8/10</td></tr>
+            <tr><td class="muted">Aug 13, 11:02</td><td>Priya Nair <span class="role-badge role-admin" style="margin-left:4px;">Admin</span></td><td>Assessment published</td><td>Threat Modeling Basics v3</td><td class="muted">—</td></tr>
+            <tr><td class="muted">Aug 11, 14:55</td><td>Priya Nair <span class="role-badge role-admin" style="margin-left:4px;">Admin</span></td><td>Role changed</td><td>Jordan Blake</td><td class="muted">Candidate → Reviewer</td></tr>
+            <tr><td class="muted">Aug 10, 08:30</td><td>Alex Chen <span class="role-badge role-superadmin" style="margin-left:4px;">Super Admin</span></td><td>Integration key added</td><td>Mistral AI</td><td class="muted">Initial configuration</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

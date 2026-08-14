@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Import from PDF — Assessment Portal</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — Admin area. <a href="../index.html">← All screens</a></div>
+<div class="app-shell">
+  <nav class="sidebar">
+    <div class="brand"><div class="brand-mark">AP</div> Assessment Portal</div>
+    <div class="nav-group">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link active" href="assessments.html">Assessments</a>
+      <a class="nav-link" href="tracks.html">Onboarding Tracks</a>
+      <a class="nav-link" href="reports.html">Reports</a>
+      <a class="nav-link" href="audit-log.html">Audit Log</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Super Admin</div>
+      <a class="nav-link" href="users.html">Users</a>
+      <a class="nav-link" href="integrations.html">Integrations</a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">Import questions from PDF</div>
+      <div class="topbar-user">
+        <span class="role-badge role-admin">Admin</span>
+        <div class="avatar">PN</div> Priya Nair
+        <a class="btn btn-ghost btn-sm" href="../login.html">Log out</a>
+      </div>
+    </header>
+    <div class="content">
+      <div class="crumb"><a href="assessments.html">Assessments</a> / <a href="assessment-builder.html">Threat Modeling Basics</a> / Import from PDF</div>
+
+      <div class="callout callout-info">
+        Text is extracted from the PDF and structured by <strong>Mistral AI</strong>. Nothing below is saved until you review and confirm — every field is editable. <span class="small">Ref: tech-stack.md §4</span>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>1. Source document</h2><span class="pill pill-passed">Parsed</span></div>
+        <div style="border:1.5px dashed var(--border); border-radius:8px; padding:18px; display:flex; align-items:center; gap:14px;">
+          <div style="width:38px;height:38px;border-radius:8px;background:var(--critical-soft);color:var(--critical);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;">PDF</div>
+          <div style="flex:1;">
+            <strong>Onboarding-Cyber-Track-Questions-v2.pdf</strong>
+            <div class="muted small">1.2 MB · 6 pages · uploaded 2 min ago</div>
+          </div>
+          <button class="btn btn-sm">Replace file</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>2. Extracted questions — review before saving</h2>
+          <span class="muted small">5 of 5 parsed</span>
+        </div>
+
+        <div class="card" style="background:var(--bg); box-shadow:none;">
+          <div class="form-row">
+            <div class="field" style="flex:3;"><label>Question text</label><input type="text" value="Which port is used by DNS over TCP by default?"></div>
+            <div class="field" style="flex:1;"><label>Type</label>
+              <select><option>single-choice</option><option>MCQ</option><option>short-answer</option></select>
+            </div>
+          </div>
+          <div class="option-row" style="border-color:var(--good); background:var(--good-soft);"><input type="text" value="53" style="border:none;background:transparent;padding:0;font-weight:600;"> ✓ correct</div>
+          <div class="option-row"><input type="text" value="443" style="border:none;background:transparent;padding:0;"></div>
+          <div class="option-row"><input type="text" value="8080" style="border:none;background:transparent;padding:0;"></div>
+          <div class="option-row"><input type="text" value="22" style="border:none;background:transparent;padding:0;"></div>
+        </div>
+
+        <div class="card" style="background:var(--bg); box-shadow:none;">
+          <div class="form-row">
+            <div class="field" style="flex:3;"><label>Question text</label><input type="text" value="True or False: TLS 1.0 is still considered secure for production use."></div>
+            <div class="field" style="flex:1;"><label>Type</label>
+              <select><option selected>single-choice</option></select>
+            </div>
+          </div>
+          <div class="option-row"><input type="text" value="True" style="border:none;background:transparent;padding:0;"></div>
+          <div class="option-row" style="border-color:var(--good); background:var(--good-soft);"><input type="text" value="False" style="border:none;background:transparent;padding:0;font-weight:600;"> ✓ correct</div>
+        </div>
+
+        <div class="card" style="background:var(--bg); box-shadow:none;">
+          <div class="flex-between">
+            <div class="field" style="flex:1; margin:0;"><label>Question text</label><input type="text" value="Briefly explain the difference between symmetric and asymmetric encryption."></div>
+          </div>
+          <div class="field" style="margin-top:10px;"><label>Type</label>
+            <select style="max-width:220px;"><option>free-text (manually graded)</option></select>
+          </div>
+          <div class="hint">Model couldn't detect a fixed answer key for this one — flagged for your review.</div>
+        </div>
+
+        <p class="muted small">+ 2 more extracted questions…</p>
+      </div>
+
+      <div class="flex-between">
+        <button class="btn">Discard</button>
+        <a class="btn btn-primary" href="assessment-builder.html">Add 5 questions to assessment</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

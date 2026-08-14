@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grading Queue — Assessment Portal</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — Reviewer area. <a href="../index.html">← All screens</a></div>
+<div class="app-shell">
+  <nav class="sidebar">
+    <div class="brand"><div class="brand-mark">AP</div> Assessment Portal</div>
+    <div class="nav-group">
+      <a class="nav-link active" href="dashboard.html">Grading Queue</a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">Grading Queue</div>
+      <div class="topbar-user">
+        <span class="role-badge role-reviewer">Reviewer</span>
+        <div class="avatar">KW</div> Ken Watanabe
+        <a class="btn btn-ghost btn-sm" href="../login.html">Log out</a>
+      </div>
+    </header>
+    <div class="content">
+      <p class="muted" style="margin-bottom:18px;">Free-text and file-upload submissions from your direct reports, awaiting manual grading. <span class="small">Ref: FR-24</span></p>
+
+      <div class="stat-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="stat-tile"><div class="stat-label">Awaiting review</div><div class="stat-value">4</div></div>
+        <div class="stat-tile"><div class="stat-label">Graded this week</div><div class="stat-value">9</div></div>
+        <div class="stat-tile"><div class="stat-label">Avg. turnaround</div><div class="stat-value">1.2d</div><div class="stat-sub">target: under 48h</div></div>
+      </div>
+
+      <div class="card">
+        <table>
+          <thead><tr><th>Candidate</th><th>Assessment</th><th>Question</th><th>Submitted</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Daniel Osei</td><td>Threat Modeling Basics</td><td>Q7 — free-text</td><td class="muted">Aug 12, 3:40 PM</td>
+              <td><span class="pill pill-needs-review">Needs review</span></td>
+              <td><a class="btn btn-sm btn-primary" href="grading.html">Grade</a></td>
+            </tr>
+            <tr>
+              <td>Ken Watanabe's report — M. Chen</td><td>Teaching Scenarios</td><td>Q2 — file upload</td><td class="muted">Aug 12, 11:05 AM</td>
+              <td><span class="pill pill-needs-review">Needs review</span></td>
+              <td><a class="btn btn-sm btn-primary" href="grading.html">Grade</a></td>
+            </tr>
+            <tr>
+              <td>Fatima Rahman</td><td>Network Fundamentals</td><td>Q19 — free-text</td><td class="muted">Aug 11, 4:55 PM</td>
+              <td><span class="pill pill-needs-review">Needs review</span></td>
+              <td><a class="btn btn-sm btn-primary" href="grading.html">Grade</a></td>
+            </tr>
+            <tr>
+              <td>Jordan Blake</td><td>Threat Modeling Basics</td><td>Q7 — free-text</td><td class="muted">Aug 10, 9:20 AM</td>
+              <td><span class="pill pill-needs-review">Needs review</span></td>
+              <td><a class="btn btn-sm btn-primary" href="grading.html">Grade</a></td>
+            </tr>
+            <tr style="opacity:.6;">
+              <td>Maria Lopez</td><td>Support Workflow Quiz</td><td>Q4 — free-text</td><td class="muted">Aug 09, 2:10 PM</td>
+              <td><span class="pill pill-passed">Graded</span></td>
+              <td><a class="btn btn-sm" href="grading.html">View</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Assign Track — Assessment Portal</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — Admin area. <a href="../index.html">← All screens</a></div>
+<div class="app-shell">
+  <nav class="sidebar">
+    <div class="brand"><div class="brand-mark">AP</div> Assessment Portal</div>
+    <div class="nav-group">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link" href="assessments.html">Assessments</a>
+      <a class="nav-link active" href="tracks.html">Onboarding Tracks</a>
+      <a class="nav-link" href="reports.html">Reports</a>
+      <a class="nav-link" href="audit-log.html">Audit Log</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Super Admin</div>
+      <a class="nav-link" href="users.html">Users</a>
+      <a class="nav-link" href="integrations.html">Integrations</a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">Assign track to a new hire</div>
+      <div class="topbar-user">
+        <span class="role-badge role-admin">Admin</span>
+        <div class="avatar">PN</div> Priya Nair
+        <a class="btn btn-ghost btn-sm" href="../login.html">Log out</a>
+      </div>
+    </header>
+    <div class="content">
+      <div class="crumb"><a href="tracks.html">Onboarding Tracks</a> / Assign</div>
+
+      <div class="card">
+        <div class="card-header"><h2>New hire — FR-3</h2><a class="small" href="users.html">or import a CSV of hires →</a></div>
+        <div class="form-row">
+          <div class="field"><label>Full name</label><input type="text" placeholder="Jordan Blake"></div>
+          <div class="field"><label>Work email</label><input type="text" placeholder="jordan.blake@zevonai.com"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Department</label><input type="text" placeholder="Security"></div>
+          <div class="field"><label>Manager (Reviewer)</label><input type="text" placeholder="Ken Watanabe"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Onboarding track — FR-11</h2></div>
+        <div class="field"><label>Track template</label>
+          <select><option>Cybersecurity Instructor Onboarding (5 steps)</option><option>Support Staff Onboarding (3 steps)</option><option>Mentorship Onboarding (4 steps)</option></select>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Start date</label><input type="date" value="2026-08-18"></div>
+          <div class="field"><label>Overall due date</label><input type="date" value="2026-09-01"></div>
+        </div>
+        <div class="hint">Per-step due dates are calculated automatically from the template's offsets and can be adjusted after assignment.</div>
+      </div>
+
+      <div class="flex-between">
+        <a class="btn" href="tracks.html">Cancel</a>
+        <button class="btn btn-primary">Assign track</button>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Recently assigned</h2></div>
+        <table>
+          <thead><tr><th>Hire</th><th>Track</th><th>Assigned</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Fatima Rahman</td><td>Cybersecurity Instructor Onboarding</td><td class="muted">Aug 04</td><td><span class="pill pill-in-progress">In progress</span></td></tr>
+            <tr><td>Daniel Osei</td><td>Cybersecurity Instructor Onboarding</td><td class="muted">Jul 29</td><td><span class="pill pill-needs-review">Needs review</span></td></tr>
+            <tr><td>Maria Lopez</td><td>Support Staff Onboarding</td><td class="muted">Jul 22</td><td><span class="pill pill-overdue">Overdue</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

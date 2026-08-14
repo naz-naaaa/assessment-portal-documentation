@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grade Submission — Assessment Portal</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — Reviewer area. <a href="../index.html">← All screens</a></div>
+<div class="app-shell">
+  <nav class="sidebar">
+    <div class="brand"><div class="brand-mark">AP</div> Assessment Portal</div>
+    <div class="nav-group">
+      <a class="nav-link active" href="dashboard.html">Grading Queue</a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">Grade submission</div>
+      <div class="topbar-user">
+        <span class="role-badge role-reviewer">Reviewer</span>
+        <div class="avatar">KW</div> Ken Watanabe
+        <a class="btn btn-ghost btn-sm" href="../login.html">Log out</a>
+      </div>
+    </header>
+    <div class="content content-narrow">
+      <div class="crumb"><a href="dashboard.html">Grading Queue</a> / Daniel Osei — Threat Modeling Basics</div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Q7. Free-text · 10 pts</h2>
+          <span class="pill pill-needs-review">Needs review</span>
+        </div>
+        <p class="muted small">Describe a threat model for a new internal admin tool you'd build. What would you prioritize and why?</p>
+        <div class="divider"></div>
+        <p style="white-space:pre-wrap;">I'd start by identifying the trust boundaries — who can reach the tool (internal network only vs. exposed), and what data it touches. Given it's an admin tool, I'd prioritize authentication (SSO + RBAC) and audit logging first, since a compromised admin session is the highest-impact scenario. I'd also threat-model the data at rest — if it stores PII, encryption and access scoping matter more than, say, rate limiting on a low-traffic internal tool.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Rubric</h2></div>
+        <table>
+          <thead><tr><th>Criterion</th><th style="width:110px;">Points</th></tr></thead>
+          <tbody>
+            <tr><td>Identifies trust boundaries / attack surface</td><td><input type="number" value="3" style="width:60px;"> / 3</td></tr>
+            <tr><td>Prioritization is justified by impact</td><td><input type="number" value="3" style="width:60px;"> / 3</td></tr>
+            <tr><td>Covers data-at-rest / data-in-transit</td><td><input type="number" value="2" style="width:60px;"> / 2</td></tr>
+            <tr><td>Clarity &amp; completeness</td><td><input type="number" value="2" style="width:60px;"> / 2</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2>Feedback to candidate — FR-26</h2></div>
+        <div class="field"><textarea>Strong answer — good instinct prioritizing auth/audit over rate limiting for an internal tool. Consider also naming a specific mitigation (e.g. field-level encryption) next time for full marks.</textarea></div>
+        <div class="check-row"><input type="checkbox" checked id="vis"><label for="vis">Visible to candidate once released</label></div>
+      </div>
+
+      <div class="flex-between">
+        <a class="btn" href="dashboard.html">Back to queue</a>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <strong>Score: 8 / 10</strong>
+          <button class="btn btn-primary" onclick="window.location.href='dashboard.html'">Submit grade</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
