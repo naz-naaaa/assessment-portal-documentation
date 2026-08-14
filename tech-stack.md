@@ -30,6 +30,7 @@
 | Hosting | Single container or Vercel, deployed to whatever cloud zevonai.com already runs on (per requirements.md §7 — confirm) | Avoids standing up new infra just for this tool. |
 | CI | GitHub Actions: lint → typecheck → test → deploy | Nothing bespoke. |
 | Package manager | pnpm | Faster installs, fine for a single-app repo. |
+| AI / LLM provider | **Mistral AI** (chat/completion API) | Parses an admin-uploaded PDF question bank into structured question/option/answer-key JSON for the assessment builder (extends FR-5). Extraction result is always shown in an editable preview — nothing persists until the admin confirms. Company-provided API key. |
 
 ## 3. Repo layout
 
@@ -55,9 +56,24 @@ assessment-portal/
 └── package.json
 ```
 
-If a genuinely separate service is needed later (see §4), it becomes a sibling folder (e.g. `code-runner/`) and pnpm workspaces get introduced *at that point* — not preemptively.
+If a genuinely separate service is needed later (see §5), it becomes a sibling folder (e.g. `code-runner/`) and pnpm workspaces get introduced *at that point* — not preemptively.
 
-## 4. Deliberately excluded from v1 (avoid over-engineering)
+## 4. AI-assisted PDF question import
+
+Admins can upload a PDF of questions (extends the manual question builder from FR-5) instead of entering everything by hand:
+
+1. Extract raw text from the uploaded PDF server-side (e.g. `pdf-parse`).
+2. Send the text to **Mistral AI**'s completion API with a structured-output prompt, returning candidate questions/options/answer-keys as JSON.
+3. Render the result in the same question-builder UI as an **editable preview** — every field is a normal form field the admin can correct. Nothing is written to the database until the admin explicitly saves.
+
+**API key handling:** the Mistral API key is company-provided and must be admin-configurable at runtime (not a static env var needing a redeploy to rotate).
+
+- New `Integration` (or `SystemSetting`) table holds the key, **encrypted at rest** (AES-256-GCM, encryption key from a server-only env var — never the API key itself in plaintext in the DB).
+- Decrypted only server-side, at the point of calling Mistral; never returned to the client. The settings UI shows a masked value (e.g. `sk-••••1234`) after save, never the full key.
+- Per requirements.md §4, **Super Admin** owns "integrations" — the key-configuration screen is Super Admin-scoped; Admins can still use the PDF-import feature itself.
+- Saving/rotating/removing the key is an audited action (FR-34/NFR-8: actor + timestamp).
+
+## 5. Deliberately excluded from v1 (avoid over-engineering)
 
 | Not doing now | Why | Revisit when |
 |---|---|---|
@@ -68,7 +84,7 @@ If a genuinely separate service is needed later (see §4), it becomes a sibling 
 | Kubernetes / container orchestration | One container, one database — no orchestration problem to solve yet. | If multi-service architecture actually emerges (see microservices row). |
 | Multi-tenant architecture | Requirements doc confirms single-tenant, internal-only (§7). | Not anticipated — flag if that assumption changes. |
 
-## 5. Open items that affect this recommendation
+## 6. Open items that affect this recommendation
 
 These map to open questions in `requirements.md` §11 — confirm before locking the stack in:
 
