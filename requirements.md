@@ -31,7 +31,7 @@ Zevon AI needs an internal **Assessment Portal** to evaluate new staff during on
 ### Out of scope (v1)
 - Public student-facing courses/certificates on zevonai.com (separate system).
 - Payroll, benefits, or other HRIS functions.
-- Video-proctoring / anti-cheating beyond basic tab-switch/time tracking.
+- Video-proctoring / anti-cheating beyond basic tab-switch/time tracking. (This excludes automated biometric face-matching specifically — the login selfie capture in FR-35 is a store-only identity signal for manual review, not proctoring or automated verification.)
 - Native mobile apps (web-responsive only).
 
 ## 4. Stakeholders & User Roles
@@ -46,10 +46,11 @@ Zevon AI needs an internal **Assessment Portal** to evaluate new staff during on
 ## 5. Functional Requirements
 
 ### 5.1 Authentication & Access
-- FR-1: Users log in via company SSO (Google Workspace / Microsoft, TBD) or email+password with invite-only registration.
+- FR-1: Users log in via company SSO (Google Workspace / Microsoft, TBD) or email+password with invite-only registration. The email+password path uses a single shared registration link (not a unique link per invitee) — an admin-issued invite makes one email address eligible to register there; the server checks the email the candidate registers with against a pending invite for it, rather than a per-person token. (Revised from the original per-invite-token design — see issue #125 in the `assessment-portal` repo.)
 - FR-2: Role-based access control (Admin, Reviewer, Candidate, Super Admin).
 - FR-3: New hires are provisioned an account automatically when added to an onboarding cohort (manual entry or CSV import in v1).
 - FR-4: Session timeout and secure password/reset flow if not fully SSO-based.
+- FR-35: Candidate logins capture a live photo via the device camera (no file-upload fallback), stored for manual/admin identity review — added as the compensating control for FR-1's shared-link model above (no per-invite token to prove possession, so this is a lightweight second signal instead). Store-only in v1: no automated face-matching/biometric comparison. See issue #126 in the `assessment-portal` repo for implementation status and open scoping questions (which roles this applies to). Numbered out of sequence with §5.1 since it was added after the rest of this section was drafted — see §11 for other post-draft numbering notes.
 
 ### 5.2 Assessment Management (Admin)
 - FR-5: Admin can create assessments composed of multiple question types: multiple-choice, single-choice, short answer, code exercise, file upload, and free-text (manually graded).
@@ -125,7 +126,7 @@ Zevon AI needs an internal **Assessment Portal** to evaluate new staff during on
 
 ## 9. High-Level Data Model
 
-- **User** (id, name, email, role, department, manager_id, status)
+- **User** (id, name, email, role, department, manager_id, status, latest_login_photo — FR-35, most recent capture only, not retained as history)
 - **OnboardingTrack** (id, name, department/role, list of steps)
 - **TrackAssignment** (user_id, track_id, status, due_date)
 - **Assessment** (id, title, description, time_limit, pass_threshold, attempts_allowed, status: draft/published/archived, version)
@@ -155,6 +156,7 @@ These need confirmation from stakeholders before this doc is finalized:
 7. **Certificates** — Does completing onboarding assessments need to issue a verifiable certificate (mirroring the public platform's certificate feature)?
 8. **Data retention & compliance** — Any specific regulatory requirements (e.g. GDPR, since students are from 10+ countries — does that extend to staff)?
 9. **Timeline & budget constraints** for v1 launch.
+10. **FR-35 role scope** — Does the login selfie capture apply to CANDIDATE logins only, or to Admin/Reviewer/Super Admin as well? Assumed CANDIDATE-only (staff logins shouldn't need it), but not yet confirmed — see issue #126 in `assessment-portal`.
 
 ## 12. Proposed Phasing
 
