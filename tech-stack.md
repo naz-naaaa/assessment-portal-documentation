@@ -23,7 +23,7 @@
 | ORM | **Prisma** | Schema-first, type-safe queries, built-in migrations — maps 1:1 onto the §9 data model and keeps DB schema in the repo as code. |
 | Auth | **Auth.js (NextAuth)** | Handles Google Workspace / Microsoft SSO (FR-1) and email+password fallback out of the box. Session/JWT callbacks are enough to carry role (Admin/Reviewer/Candidate/Super Admin) for RBAC (FR-2) without a separate identity service. |
 | UI | **Tailwind CSS + shadcn/ui** | Accessible-by-default components (helps with NFR-5 WCAG 2.1 AA) without hand-building a design system. |
-| File storage | S3-compatible bucket (AWS S3 or Cloudflare R2) | Needed for file-upload question type (FR-5) and any exported reports (FR-30). |
+| File storage | **Cloudflare R2** (S3-compatible API, via `@aws-sdk/client-s3`) | Implemented for the file-upload question type (FR-5); available to reuse for FR-35's login selfie photos rather than standing up separate storage. |
 | Email | **Resend** (or SES if already on AWS) | Transactional email for FR-31 notifications. Small API, no queue infra required at this volume. |
 | Scheduled jobs | Platform cron (Vercel Cron) or a single `node-cron` process | Due-date reminders (FR-14) and digest notifications. No message queue (Redis/BullMQ) needed at 50 concurrent users — add one later only if job volume actually demands it. |
 | Testing | **Vitest** (unit) + **Playwright** (e2e for take-assessment / grade / sign-off flows) | Matches Next.js tooling, minimal config. |
