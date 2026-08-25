@@ -21,7 +21,7 @@
 | Framework | **Next.js (App Router)** | Gives you frontend (React) and backend (Server Actions / Route Handlers) in one codebase and one deploy. This *is* the monorepo — no workspace tooling needed to get backend+frontend together. |
 | Database | **PostgreSQL** | Relational fits the data model in requirements.md §9 directly (Users, Tracks, Assessments, Attempts, AuditLog — all relational with clear FKs). Managed instance (RDS / Neon / Supabase) rather than self-hosted. |
 | ORM | **Prisma** | Schema-first, type-safe queries, built-in migrations — maps 1:1 onto the §9 data model and keeps DB schema in the repo as code. |
-| Auth | **Auth.js (NextAuth)** | Handles Google Workspace / Microsoft SSO (FR-1) and email+password fallback out of the box. Session/JWT callbacks are enough to carry role (Admin/Reviewer/Candidate/Super Admin) for RBAC (FR-2) without a separate identity service. |
+| Auth | **Auth.js (NextAuth)**, email+password only (FR-1) | Session/JWT callbacks carry role (Admin/Reviewer/Candidate/Super Admin) for RBAC (FR-2) without a separate identity service. Google/Microsoft SSO was implemented then removed (`assessment-portal` issue #129): it bypassed the mandatory login-photo check (FR-35) since that check only lives in the credentials sign-in path, and there was never confirmation of which provider the company actually uses. Auth.js still supports adding an OAuth provider back later, but it would need a post-auth verification gate (not just a provider config change) to coexist with FR-35. |
 | UI | **Tailwind CSS + shadcn/ui** | Accessible-by-default components (helps with NFR-5 WCAG 2.1 AA) without hand-building a design system. |
 | File storage | **Cloudflare R2** (S3-compatible API, via `@aws-sdk/client-s3`) | Implemented for the file-upload question type (FR-5); available to reuse for FR-35's login selfie photos rather than standing up separate storage. |
 | Email | **Resend** (or SES if already on AWS) | Transactional email for FR-31 notifications. Small API, no queue infra required at this volume. |
@@ -88,6 +88,5 @@ Admins can upload a PDF of questions (extends the manual question builder from F
 
 These map to open questions in `requirements.md` §11 — confirm before locking the stack in:
 
-- **SSO provider (Google vs. Microsoft)** — Auth.js supports both; just needs the actual choice to configure the right provider.
 - **Existing cloud provider for zevonai.com** — determines managed Postgres choice (RDS if AWS, Neon/Supabase if provider-agnostic) and hosting target.
 - **Code-exercise auto-grading requirement** — confirms whether §4's sandbox line item is really Phase 2 or needs pulling into v1.
