@@ -46,10 +46,10 @@ Zevon AI needs an internal **Assessment Portal** to evaluate new staff during on
 ## 5. Functional Requirements
 
 ### 5.1 Authentication & Access
-- FR-1: Users log in via company SSO (Google Workspace / Microsoft, TBD) or email+password with invite-only registration. The email+password path uses a single shared registration link (not a unique link per invitee) — an admin-issued invite makes one email address eligible to register there; the server checks the email the candidate registers with against a pending invite for it, rather than a per-person token. (Revised from the original per-invite-token design — see issue #125 in the `assessment-portal` repo.)
+- FR-1: Users log in via email+password with invite-only registration. Uses a single shared registration link (not a unique link per invitee) — an admin-issued invite makes one email address eligible to register there; the server checks the email the candidate registers with against a pending invite for it, rather than a per-person token. (Revised from the original per-invite-token design — see issue #125 in the `assessment-portal` repo.) Google/Microsoft SSO was implemented then removed: it let a Candidate skip FR-35's mandatory login photo entirely, since that check only lived in the email+password sign-in path and nothing else enforced it for an OAuth session. Properly supporting both would need a "verify before you reach anything" gate after sign-in (a live camera capture can't happen mid-OAuth-redirect) — deferred rather than built, since SSO was never confirmed as the company's actual login method to begin with. See issue #129 in the `assessment-portal` repo.
 - FR-2: Role-based access control (Admin, Reviewer, Candidate, Super Admin).
 - FR-3: New hires are provisioned an account automatically when added to an onboarding cohort (manual entry or CSV import in v1).
-- FR-4: Session timeout and secure password/reset flow if not fully SSO-based.
+- FR-4: Session timeout and secure password/reset flow.
 - FR-35: Candidate logins capture a live photo via the device camera (no file-upload fallback), stored for manual/admin identity review — added as the compensating control for FR-1's shared-link model above (no per-invite token to prove possession, so this is a lightweight second signal instead). Store-only in v1: no automated face-matching/biometric comparison. See issue #126 in the `assessment-portal` repo for implementation status and open scoping questions (which roles this applies to). Numbered out of sequence with §5.1 since it was added after the rest of this section was drafted — see §11 for other post-draft numbering notes.
 
 ### 5.2 Assessment Management (Admin)
@@ -98,7 +98,7 @@ Zevon AI needs an internal **Assessment Portal** to evaluate new staff during on
 
 ## 6. Non-Functional Requirements
 
-- **NFR-1 Security:** All traffic over HTTPS; passwords hashed (bcrypt/argon2) if not fully SSO; role-based authorization enforced server-side on every endpoint; no PII in logs.
+- **NFR-1 Security:** All traffic over HTTPS; passwords hashed (bcrypt/argon2); role-based authorization enforced server-side on every endpoint; no PII in logs.
 - **NFR-2 Privacy:** Candidate assessment data accessible only to that candidate, their assigned Reviewer(s), and Admins — not other candidates or unrelated staff.
 - **NFR-3 Performance:** Assessment pages (question load, autosave) respond within 1–2s under normal load; supports at least 50 concurrent test-takers for v1.
 - **NFR-4 Availability:** Target 99.5% uptime during business hours; graceful handling of dropped connections during an active attempt (no lost answers).
@@ -118,7 +118,6 @@ Zevon AI needs an internal **Assessment Portal** to evaluate new staff during on
 
 | System | Purpose | Priority |
 |---|---|---|
-| Company SSO (Google/Microsoft) | Login | High |
 | HRIS / employee directory | Auto-provision new hires, department/role data | Medium |
 | Email provider (e.g. SendGrid/SES) | Notifications | High |
 | Zevon AI's existing course/LMS platform | Reuse question bank or content, share candidate identity | Low (nice-to-have) |
@@ -149,7 +148,7 @@ These need confirmation from stakeholders before this doc is finalized:
 
 1. **Who exactly is being assessed?** — Assumed: internal new hires (any department), not external course students. Please confirm scope (e.g. is this only for instructors/mentors, or all staff including support/ops?).
 2. **Assessment content types** — Assumed a mix of MCQ, code exercises, and manually-graded tasks, given Zevon AI's technical/cybersecurity focus. Confirm which types are actually needed for v1.
-3. **SSO provider** — Assumed Google Workspace or Microsoft 365; confirm which the company uses internally.
+3. ~~**SSO provider**~~ — Resolved: no SSO in v1. Google/Microsoft SSO was built, then removed (see FR-1) because it bypassed FR-35's login photo requirement and the company's actual SSO provider was never confirmed either. Email+password is the only login method until a real need (and provider) is confirmed.
 4. **Relationship to the existing zevonai.com course platform** — Should this reuse any of that platform's infrastructure (question bank, AI assistant, code editor integration), or be fully independent?
 5. **Volume** — Expected number of new hires per month/quarter, to size performance requirements.
 6. **Code-exercise auto-grading** — Is sandboxed code execution actually required for v1, or can code questions be manually reviewed initially to reduce scope?
@@ -161,7 +160,7 @@ These need confirmation from stakeholders before this doc is finalized:
 ## 12. Proposed Phasing
 
 - **Phase 1 (MVP):** Admin creates assessments (MCQ + manual-grade types only) → assign to onboarding tracks → candidates take assessments → reviewers grade → basic dashboard/reporting.
-- **Phase 2:** Auto-graded code exercises, SSO integration, email notifications, analytics.
+- **Phase 2:** Auto-graded code exercises, email notifications, analytics. (SSO integration was attempted in Phase 1 and removed — see §11 item 3 — not carried forward as a phase-2 item unless a real need re-emerges.)
 - **Phase 3:** HRIS integration, Slack notifications, certificate issuance, advanced analytics.
 
 ## 13. Glossary
