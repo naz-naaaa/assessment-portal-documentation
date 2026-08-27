@@ -66,6 +66,7 @@ Zevon AI needs an internal **Assessment Portal** to evaluate new staff during on
 - FR-13: Reviewer/Admin can manually mark a non-assessment onboarding step complete (e.g. "signed NDA") for a unified checklist view.
 - FR-14: Automatic reminder when a due date is approaching or passed (see 5.8).
 - FR-15: Final "onboarding complete" status requires all required assessments to be passed and/or reviewer sign-off.
+- FR-36: An onboarding track's steps can be reordered by an Admin, and a candidate is blocked from starting an assessment step while any earlier-ordered task step (see FR-13) is still incomplete — turns a required task like signing the NDA into an enforced gate rather than just a checklist entry. Numbered out of sequence with §5.3 since it was added after the rest of this section was drafted — see FR-35's note above on this doc's post-draft numbering convention. See issue #131 in the `assessment-portal` repo.
 
 ### 5.4 Test-Taking Experience (Candidate)
 - FR-16: Candidate sees a dashboard of assigned assessments with status and due dates.
