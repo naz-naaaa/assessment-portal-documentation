@@ -18,14 +18,14 @@
 | Layer | Choice | Why |
 |---|---|---|
 | Language | TypeScript (frontend + backend) | One language, one type system, shared types between UI and server code — no schema drift between a separate API and client. |
-| Framework | **Next.js (App Router)** | Gives you frontend (React) and backend (Server Actions / Route Handlers) in one codebase and one deploy. This *is* the monorepo — no workspace tooling needed to get backend+frontend together. |
+| Framework | **Next.js 16 (App Router)** | Gives you frontend (React) and backend (Server Actions / Route Handlers) in one codebase and one deploy. This *is* the monorepo — no workspace tooling needed to get backend+frontend together. **Note:** Next.js 16 has breaking changes from earlier versions — see `AGENTS.md` in the implementation repo. |
 | Database | **PostgreSQL** | Relational fits the data model in requirements.md §9 directly (Users, Tracks, Assessments, Attempts, AuditLog — all relational with clear FKs). Managed instance (RDS / Neon / Supabase) rather than self-hosted. |
 | ORM | **Prisma** | Schema-first, type-safe queries, built-in migrations — maps 1:1 onto the §9 data model and keeps DB schema in the repo as code. |
-| Auth | **Auth.js (NextAuth)** | Handles Google Workspace / Microsoft SSO (FR-1) and email+password fallback out of the box. Session/JWT callbacks are enough to carry role (Admin/Reviewer/Candidate/Super Admin) for RBAC (FR-2) without a separate identity service. |
-| UI | **Tailwind CSS + shadcn/ui** | Accessible-by-default components (helps with NFR-5 WCAG 2.1 AA) without hand-building a design system. |
+| Auth | **Auth.js (NextAuth)** | Handles email+password authentication with JWT sessions. Session/JWT callbacks carry role (Admin/Reviewer/Candidate/Super Admin) for RBAC (FR-2) without a separate identity service. **Note:** SSO (Google Workspace / Microsoft) was originally planned but removed in issue #129 — it bypassed the mandatory login selfie (FR-35) for candidates. SSO support is deferred to Phase 2 once a compatible gate can be implemented. |
+| UI | **Tailwind CSS + shadcn/ui + Base UI** | Accessible-by-default components (helps with NFR-5 WCAG 2.1 AA) without hand-building a design system. Base UI (`@base-ui/react`) is used alongside shadcn/ui for additional unstyled primitives. |
 | File storage | **Cloudflare R2** (S3-compatible API, via `@aws-sdk/client-s3`) | Implemented for the file-upload question type (FR-5); available to reuse for FR-35's login selfie photos rather than standing up separate storage. |
-| Email | **Resend** (or SES if already on AWS) | Transactional email for FR-31 notifications. Small API, no queue infra required at this volume. |
-| Scheduled jobs | Platform cron (Vercel Cron) or a single `node-cron` process | Due-date reminders (FR-14) and digest notifications. No message queue (Redis/BullMQ) needed at 50 concurrent users — add one later only if job volume actually demands it. |
+| Email | **Resend** (or SES if already on AWS) | Transactional email for FR-31 notifications. Small API, no queue infra required at this volume. **Phase 2** — not yet implemented. |
+| Scheduled jobs | Platform cron (Vercel Cron) or a single `node-cron` process | Due-date reminders (FR-14) and digest notifications. No message queue (Redis/BullMQ) needed at 50 concurrent users — add one later only if job volume actually demands it. **Phase 2** — not yet implemented. |
 | Testing | **Vitest** (unit) + **Playwright** (e2e for take-assessment / grade / sign-off flows) | Matches Next.js tooling, minimal config. |
 | Hosting | Single container or Vercel, deployed to whatever cloud zevonai.com already runs on (per requirements.md §7 — confirm) | Avoids standing up new infra just for this tool. |
 | CI | GitHub Actions: lint → typecheck → test → deploy | Nothing bespoke. |
@@ -88,6 +88,6 @@ Admins can upload a PDF of questions (extends the manual question builder from F
 
 These map to open questions in `requirements.md` §11 — confirm before locking the stack in:
 
-- **SSO provider (Google vs. Microsoft)** — Auth.js supports both; just needs the actual choice to configure the right provider.
+- **SSO provider (Google vs. Microsoft)** — ~~Auth.js supports both; just needs the actual choice to configure the right provider.~~ **RESOLVED:** SSO was removed in issue #129 (bypassed the login selfie requirement). Email+password is the only login path in Phase 1. SSO deferred to Phase 2 once a compatible gate can be implemented.
 - **Existing cloud provider for zevonai.com** — determines managed Postgres choice (RDS if AWS, Neon/Supabase if provider-agnostic) and hosting target.
 - **Code-exercise auto-grading requirement** — confirms whether §4's sandbox line item is really Phase 2 or needs pulling into v1.
