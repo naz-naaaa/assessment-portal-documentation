@@ -46,7 +46,7 @@ Zevon AI needs an internal **Assessment Portal** to evaluate new staff during on
 ## 5. Functional Requirements
 
 ### 5.1 Authentication & Access
-- FR-1: Users log in via company SSO (Google Workspace / Microsoft, TBD) or email+password with invite-only registration. The email+password path uses a single shared registration link (not a unique link per invitee) — an admin-issued invite makes one email address eligible to register there; the server checks the email the candidate registers with against a pending invite for it, rather than a per-person token. (Revised from the original per-invite-token design — see issue #125 in the `assessment-portal` repo.)
+- FR-1: Users log in via email+password with invite-only registration. The email+password path uses a single shared registration link (not a unique link per invitee) — an admin-issued invite makes one email address eligible to register there; the server checks the email the candidate registers with against a pending invite for it, rather than a per-person token. (Revised from the original per-invite-token design — see issue #125 in the `assessment-portal` repo.) **Note:** SSO (Google Workspace / Microsoft) was originally planned but removed in issue #129 — it bypassed the mandatory login selfie (FR-35) for candidates, so email+password is the only login path for now.
 - FR-2: Role-based access control (Admin, Reviewer, Candidate, Super Admin).
 - FR-3: New hires are provisioned an account automatically when added to an onboarding cohort (manual entry or CSV import in v1).
 - FR-4: Session timeout and secure password/reset flow if not fully SSO-based.
@@ -64,7 +64,7 @@ Zevon AI needs an internal **Assessment Portal** to evaluate new staff during on
 - FR-11: Each new hire is assigned an **onboarding track** = ordered list of assessments/tasks with due dates.
 - FR-12: Track progress is visible as a checklist/progress bar (Not started / In progress / Submitted / Passed / Failed / Needs review).
 - FR-13: Reviewer/Admin can manually mark a non-assessment onboarding step complete (e.g. "signed NDA") for a unified checklist view.
-- FR-14: Automatic reminder when a due date is approaching or passed (see 5.8).
+- FR-14: Automatic reminder when a due date is approaching or passed (see 5.8). **Phase 2** — not yet implemented; requires scheduled jobs infrastructure.
 - FR-15: Final "onboarding complete" status requires all required assessments to be passed and/or reviewer sign-off.
 
 ### 5.4 Test-Taking Experience (Candidate)
@@ -89,8 +89,8 @@ Zevon AI needs an internal **Assessment Portal** to evaluate new staff during on
 - FR-30: Export results to CSV/PDF.
 
 ### 5.7 Notifications
-- FR-31: Email notifications for: assessment assigned, due-date reminder, submission received, results released, onboarding complete.
-- FR-32: In-app notification center for pending actions (e.g. reviewer has ungraded submissions).
+- FR-31: Email notifications for: assessment assigned, due-date reminder, submission received, results released, onboarding complete. **Phase 2** — not yet implemented; email provider integration (Resend/SES) deferred.
+- FR-32: In-app notification center for pending actions (e.g. reviewer has ungraded submissions). **Phase 2** — not yet implemented.
 
 ### 5.8 Admin/User Management
 - FR-33: Super Admin manages user accounts, roles, and department/track assignment.
@@ -160,8 +160,8 @@ These need confirmation from stakeholders before this doc is finalized:
 
 ## 12. Proposed Phasing
 
-- **Phase 1 (MVP):** Admin creates assessments (MCQ + manual-grade types only) → assign to onboarding tracks → candidates take assessments → reviewers grade → basic dashboard/reporting.
-- **Phase 2:** Auto-graded code exercises, SSO integration, email notifications, analytics.
+- **Phase 1 (MVP) — IMPLEMENTED:** Admin creates assessments (MCQ, single-choice, short-answer, file-upload, free-text) → assign to onboarding tracks (with assessment and task steps) → candidates take assessments (with timer, auto-save, integrity tracking) → reviewers grade (auto for objective, manual for subjective) → dashboard/reporting with CSV/PDF export, per-assessment analytics. Includes: invite-only registration, login selfie capture for candidates (FR-35), Mistral AI PDF question import, Cloudflare R2 file storage.
+- **Phase 2:** Auto-graded code exercises, SSO integration (deferred from Phase 1 — see issue #129), email notifications (FR-31), in-app notification center (FR-32), scheduled due-date reminders (FR-14).
 - **Phase 3:** HRIS integration, Slack notifications, certificate issuance, advanced analytics.
 
 ## 13. Glossary
