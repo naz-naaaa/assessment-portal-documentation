@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Log in — Assessment Portal</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — one login screen for every role; role determines redirect. <a href="index.html">← All screens</a></div>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="brand-mark">AP</div>
+      <div><strong>Assessment Portal</strong><div class="muted small">Zevon AI — internal onboarding</div></div>
+    </div>
+
+    <p class="small muted" style="margin-bottom:16px;">Preview a role's landing page (prototype shortcut):</p>
+    <div class="role-switch">
+      <a class="active" href="admin/dashboard.html">Admin</a>
+      <a href="reviewer/dashboard.html">Reviewer</a>
+      <a href="candidate/dashboard.html">Candidate</a>
+    </div>
+
+    <div class="field">
+      <label for="email">Work email</label>
+      <input id="email" type="email" placeholder="you@zevonai.com" value="priya.nair@zevonai.com">
+    </div>
+    <div class="field">
+      <label for="pw">Password</label>
+      <input id="pw" type="password" value="••••••••••">
+      <div class="hint">Invite-only registration — accounts are provisioned by an Admin or Super Admin.</div>
+    </div>
+    <a class="btn btn-primary btn-block" href="admin/dashboard.html">Log in</a>
+
+    <div class="divider"></div>
+    <p class="small muted" style="text-align:center;">Forgot password? Contact your Admin.<br>SSO (Google / Microsoft) — planned for Phase 2.</p>
+  </div>
+</div>
+</body>
+</html>

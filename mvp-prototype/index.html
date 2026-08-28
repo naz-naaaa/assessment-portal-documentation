@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Assessment Portal — Prototype</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Click-through prototype — static HTML mockup, no real backend. See <a href="../workflow-mvp.html">workflow-mvp.html</a> for the mechanism diagrams.</div>
+<div class="auth-wrap" style="align-items:flex-start; padding-top:60px;">
+  <div style="width:880px;">
+    <div class="auth-brand">
+      <div class="brand-mark">AP</div>
+      <div>
+        <h1 style="font-size:20px;">Assessment Portal — Screen Index</h1>
+        <p class="muted">Phase 1 MVP. Every screen below is a static page — pick a role to start clicking through.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><h2>Start here</h2></div>
+      <a class="btn btn-primary" href="login.html">Open login screen →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><h2>Admin</h2><span class="role-badge role-admin">Admin</span></div>
+      <div class="tag-list">
+        <a class="tag" href="admin/dashboard.html">Dashboard</a>
+        <a class="tag" href="admin/assessments.html">Assessments</a>
+        <a class="tag" href="admin/assessment-builder.html">Assessment builder</a>
+        <a class="tag" href="admin/pdf-import.html">PDF import (Mistral AI)</a>
+        <a class="tag" href="admin/tracks.html">Onboarding tracks</a>
+        <a class="tag" href="admin/track-builder.html">Track builder</a>
+        <a class="tag" href="admin/assign-track.html">Assign track to hire</a>
+        <a class="tag" href="admin/reports.html">Reports</a>
+        <a class="tag" href="admin/audit-log.html">Audit log</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><h2>Super Admin</h2><span class="role-badge role-superadmin">Super Admin</span></div>
+      <div class="tag-list">
+        <a class="tag" href="admin/users.html">User management</a>
+        <a class="tag" href="admin/integrations.html">Integrations (Mistral API key)</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><h2>Reviewer</h2><span class="role-badge role-reviewer">Reviewer</span></div>
+      <div class="tag-list">
+        <a class="tag" href="reviewer/dashboard.html">Grading queue</a>
+        <a class="tag" href="reviewer/grading.html">Grade a submission</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><h2>Candidate</h2><span class="role-badge role-candidate">Candidate</span></div>
+      <div class="tag-list">
+        <a class="tag" href="candidate/dashboard.html">Dashboard</a>
+        <a class="tag" href="candidate/assessment-intro.html">Assessment intro</a>
+        <a class="tag" href="candidate/take-assessment.html">Take assessment</a>
+        <a class="tag" href="candidate/results.html">Results</a>
+      </div>
+    </div>
+
+    <p class="muted small">Built from requirements.md / tech-stack.md. Not committed to the repo — local reference only.</p>
+  </div>
+</div>
+</body>
+</html>

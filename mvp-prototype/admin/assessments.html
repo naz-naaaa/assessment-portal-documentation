@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Assessments — Assessment Portal</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — Admin area. <a href="../index.html">← All screens</a></div>
+<div class="app-shell">
+  <nav class="sidebar">
+    <div class="brand"><div class="brand-mark">AP</div> Assessment Portal</div>
+    <div class="nav-group">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link active" href="assessments.html">Assessments</a>
+      <a class="nav-link" href="tracks.html">Onboarding Tracks</a>
+      <a class="nav-link" href="reports.html">Reports</a>
+      <a class="nav-link" href="audit-log.html">Audit Log</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Super Admin</div>
+      <a class="nav-link" href="users.html">Users</a>
+      <a class="nav-link" href="integrations.html">Integrations</a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">Assessments</div>
+      <div class="topbar-user">
+        <span class="role-badge role-admin">Admin</span>
+        <div class="avatar">PN</div> Priya Nair
+        <a class="btn btn-ghost btn-sm" href="../login.html">Log out</a>
+      </div>
+    </header>
+    <div class="content">
+      <div class="flex-between" style="margin-bottom:18px;">
+        <p class="muted" style="margin:0;">FR-5–FR-10 — author, tag, and version assessments.</p>
+        <div style="display:flex; gap:10px;">
+          <a class="btn" href="pdf-import.html">Import from PDF</a>
+          <a class="btn btn-primary" href="assessment-builder.html">+ New assessment</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <table>
+          <thead><tr><th>Title</th><th>Status</th><th>Questions</th><th>Pass threshold</th><th>Time limit</th><th>Attempts</th><th>Updated</th><th></th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Threat Modeling Basics</strong><div class="tag-list" style="margin-top:4px;"><span class="tag">cybersecurity</span><span class="tag">v3</span></div></td>
+              <td><span class="pill pill-published">Published</span></td>
+              <td class="num">18</td><td class="num">70%</td><td class="num">45 min</td><td class="num">2</td>
+              <td class="muted">Aug 10</td>
+              <td><a class="btn btn-sm" href="assessment-builder.html">Edit</a></td>
+            </tr>
+            <tr>
+              <td><strong>Network Fundamentals</strong><div class="tag-list" style="margin-top:4px;"><span class="tag">cybersecurity</span><span class="tag">v1</span></div></td>
+              <td><span class="pill pill-published">Published</span></td>
+              <td class="num">24</td><td class="num">65%</td><td class="num">60 min</td><td class="num">1</td>
+              <td class="muted">Aug 08</td>
+              <td><a class="btn btn-sm" href="assessment-builder.html">Edit</a></td>
+            </tr>
+            <tr>
+              <td><strong>Support Workflow Quiz</strong><div class="tag-list" style="margin-top:4px;"><span class="tag">support</span><span class="tag">v2</span></div></td>
+              <td><span class="pill pill-published">Published</span></td>
+              <td class="num">12</td><td class="num">75%</td><td class="num">30 min</td><td class="num">3</td>
+              <td class="muted">Aug 05</td>
+              <td><a class="btn btn-sm" href="assessment-builder.html">Edit</a></td>
+            </tr>
+            <tr>
+              <td><strong>Teaching Scenarios (practical)</strong><div class="tag-list" style="margin-top:4px;"><span class="tag">mentorship</span><span class="tag">v1</span></div></td>
+              <td><span class="pill pill-draft">Draft</span></td>
+              <td class="num">6</td><td class="num">—</td><td class="num">untimed</td><td class="num">1</td>
+              <td class="muted">Aug 13</td>
+              <td><a class="btn btn-sm" href="assessment-builder.html">Edit</a></td>
+            </tr>
+            <tr>
+              <td><strong>Legacy Compliance Quiz</strong></td>
+              <td><span class="pill pill-archived">Archived</span></td>
+              <td class="num">10</td><td class="num">60%</td><td class="num">20 min</td><td class="num">1</td>
+              <td class="muted">Mar 02</td>
+              <td><a class="btn btn-sm" href="assessment-builder.html">View</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

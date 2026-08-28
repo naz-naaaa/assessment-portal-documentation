@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Assessment Builder — Assessment Portal</title>
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div class="proto-banner">Prototype — Admin area. <a href="../index.html">← All screens</a></div>
+<div class="app-shell">
+  <nav class="sidebar">
+    <div class="brand"><div class="brand-mark">AP</div> Assessment Portal</div>
+    <div class="nav-group">
+      <a class="nav-link" href="dashboard.html">Dashboard</a>
+      <a class="nav-link active" href="assessments.html">Assessments</a>
+      <a class="nav-link" href="tracks.html">Onboarding Tracks</a>
+      <a class="nav-link" href="reports.html">Reports</a>
+      <a class="nav-link" href="audit-log.html">Audit Log</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-label">Super Admin</div>
+      <a class="nav-link" href="users.html">Users</a>
+      <a class="nav-link" href="integrations.html">Integrations</a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">Edit assessment</div>
+      <div class="topbar-user">
+        <span class="role-badge role-admin">Admin</span>
+        <div class="avatar">PN</div> Priya Nair
+        <a class="btn btn-ghost btn-sm" href="../login.html">Log out</a>
+      </div>
+    </header>
+    <div class="content">
+      <div class="crumb"><a href="assessments.html">Assessments</a> / Threat Modeling Basics</div>
+
+      <div class="card">
+        <div class="card-header"><h2>Details</h2><span class="pill pill-draft">Draft</span></div>
+        <div class="form-row">
+          <div class="field"><label>Title</label><input type="text" value="Threat Modeling Basics"></div>
+          <div class="field"><label>Tags</label><input type="text" value="cybersecurity, instructor"></div>
+        </div>
+        <div class="field"><label>Description</label><textarea>Covers STRIDE, attack-surface identification, and basic mitigation planning for new cybersecurity instructors.</textarea></div>
+        <fieldset>
+          <legend>Rules — FR-7</legend>
+          <div class="form-row">
+            <div class="field"><label>Time limit (minutes)</label><input type="number" value="45"></div>
+            <div class="field"><label>Pass threshold (%)</label><input type="number" value="70"></div>
+            <div class="field"><label>Attempts allowed</label><input type="number" value="2"></div>
+          </div>
+          <div class="check-row"><input type="checkbox" checked id="rand"><label for="rand">Randomize question order</label></div>
+          <div class="check-row"><input type="checkbox" id="pool"><label for="pool">Draw a random subset from the question bank</label></div>
+        </fieldset>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Questions (18)</h2>
+          <div style="display:flex; gap:8px;">
+            <a class="btn btn-sm" href="pdf-import.html">Import from PDF</a>
+            <button class="btn btn-sm btn-primary">+ Add question</button>
+          </div>
+        </div>
+
+        <div class="card" style="background:var(--bg); box-shadow:none;">
+          <div class="flex-between">
+            <strong>Q1. Which STRIDE category covers unauthorized data disclosure?</strong>
+            <span class="tag">single-choice · 2 pts</span>
+          </div>
+          <div style="margin-top:10px;">
+            <div class="option-row">Spoofing</div>
+            <div class="option-row" style="border-color:var(--good); background:var(--good-soft);">Information Disclosure ✓</div>
+            <div class="option-row">Repudiation</div>
+            <div class="option-row">Elevation of Privilege</div>
+          </div>
+          <div style="margin-top:10px; display:flex; gap:8px;"><button class="btn btn-sm">Edit</button><button class="btn btn-sm">Remove</button></div>
+        </div>
+
+        <div class="card" style="background:var(--bg); box-shadow:none;">
+          <div class="flex-between">
+            <strong>Q7. Describe a threat model for a new internal admin tool you'd build. What would you prioritize and why?</strong>
+            <span class="tag">free-text · manually graded</span>
+          </div>
+          <div class="hint" style="margin-top:8px;">Routed to Reviewer queue on submission (FR-24). Rubric attached: 4 criteria, 10 pts total.</div>
+          <div style="margin-top:10px; display:flex; gap:8px;"><button class="btn btn-sm">Edit</button><button class="btn btn-sm">Remove</button></div>
+        </div>
+
+        <p class="muted small">+ 16 more questions…</p>
+      </div>
+
+      <div class="flex-between">
+        <div style="display:flex; gap:10px;">
+          <button class="btn">Save as draft</button>
+          <a class="btn" href="../candidate/assessment-intro.html" title="Opens candidate-view preview (FR-9)">Preview as candidate</a>
+        </div>
+        <button class="btn btn-primary">Publish</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
